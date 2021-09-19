@@ -12,10 +12,18 @@ const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log('check validity');
+      setFormIsValid(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      );
+    }, 500);
 
-    setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    );
+    return()=>{
+      console.log('clean up');
+      clearTimeout(identifier); //clear the last timer before setting a new one
+    };
+
   }, [enteredEmail, enteredPassword]); //it will rerun only if these dependencies changed
 
   const emailChangeHandler = (event) => {
