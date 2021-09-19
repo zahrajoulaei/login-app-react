@@ -11,12 +11,12 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  useEffect( ()=>{
+  useEffect(() => {
 
     setFormIsValid(
       enteredEmail.includes('@') && enteredPassword.trim().length > 6
     );
-  },[enteredEmail, enteredPassword]); //it will rerun only if these dependencies changed
+  }, [enteredEmail, enteredPassword]); //it will rerun only if these dependencies changed
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
@@ -25,10 +25,6 @@ const Login = (props) => {
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
-
-    // setFormIsValid(
-    //   event.target.value.trim().length > 6 && enteredEmail.includes('@')
-    // );
   };
 
   const validateEmailHandler = () => {
@@ -48,9 +44,8 @@ const Login = (props) => {
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <div
-          className={`${classes.control} ${
-            emailIsValid === false ? classes.invalid : ''
-          }`}
+          className={`${classes.control} ${emailIsValid === false ? classes.invalid : ''
+            }`}
         >
           <label htmlFor="email">E-Mail</label>
           <input
@@ -62,9 +57,8 @@ const Login = (props) => {
           />
         </div>
         <div
-          className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
-          }`}
+          className={`${classes.control} ${passwordIsValid === false ? classes.invalid : ''
+            }`}
         >
           <label htmlFor="password">Password</label>
           <input
